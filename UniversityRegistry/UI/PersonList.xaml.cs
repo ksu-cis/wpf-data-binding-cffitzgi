@@ -22,5 +22,20 @@ namespace UniversityRegistry.UI
         {
             InitializeComponent();
         }
+        
+        /// <summary>
+        /// Proxy event handler
+        /// </summary>
+        public event SelectionChangedEventHandler SelectionChanged;
+
+        /// <summary>
+        /// Proxy event listener that passes SelectionChanged events
+        /// </summary>
+        /// <param name="sender">The ListView whose selection was changed</param>
+        /// <param name="e">The event arguments</param>
+        private void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SelectionChanged?.Invoke(this, e);
+        }
     }
 }
